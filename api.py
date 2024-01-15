@@ -6,7 +6,7 @@ from urllib.parse import urlparse
 
 def shorten_link(url, api):
     headers = {"Authorization": "Bearer {}".format(api)}
-    long_url = input("Введите ссылку \n>>>")
+
     params = {"long_url": long_url}
     response = requests.post(url, headers=headers, json=params)
     response.raise_for_status()
@@ -21,8 +21,6 @@ def count_clicks(api, bitlink):
     response = requests.get(link, params=params, headers=headers)
     response.raise_for_status()
 
-    print("Колличество кликов:", response.json()["total_clicks"])
-
     return response.json()["total_clicks"]
 
 
@@ -35,6 +33,7 @@ def parsed_url(bitlink):
 if __name__ == "__main__":
     load_dotenv()
 
+    long_url = input("Введите ссылку \n>>>")
     url = "https://api-ssl.bitly.com/v4/bitlinks"
     api = os.getenv("api")
     try:
@@ -45,4 +44,5 @@ if __name__ == "__main__":
     print("Битлинк", bitlink)
 
     parsed_path_bitlink = parsed_url(bitlink)
-    count_clicks(api, parsed_path_bitlink)
+    count_clicks = count_clicks(api, bitlink)
+    print("Колличество кликов:", count_clicks)
