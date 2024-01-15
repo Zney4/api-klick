@@ -1,50 +1,19 @@
-```python
-import requests
-import os
-from dotenv import load_dotenv
-from urllib.parse import urlparse
+# Обрезка ссылок с помощью Битли
 
+1. Короткое описание проекта:
+    api.py это код который считает клики по ссылкам битлинка
 
-def shorten_link(url, api):
-    headers = {"Authorization": "Bearer {}".format(api)}
-    long_url = input("Введите ссылку \n>>>")
-    params = {"long_url": long_url}
-    response = requests.post(url, headers=headers, json=params)
-    response.raise_for_status()
+2. Требования к окружению:
+     Python
 
-    return response.json()["id"]
+3. Как скачать
 
-
-def count_clicks(api, bitlink):
-    headers = {"Authorization": "Bearer {}".format(api)}
-    link = f"https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/clicks/summary"
-    params = {"units": -1, "unit": "month"}
-    response = requests.get(link, params=params, headers=headers)
-    response.raise_for_status()
-
-    print("Колличество кликов:", response.json()["total_clicks"])
-
-    return response.json()["total_clicks"]
-
-
-def parsed_url(bitlink):
-    parsed_bitlink = urlparse(bitlink)
-
-    return parsed_bitlink.netloc + parsed_bitlink.path
-
-
-if __name__ == "__main__":
-    load_dotenv()
-
-    url = "https://api-ssl.bitly.com/v4/bitlinks"
-    api = os.getenv("api")
-    try:
-        bitlink = shorten_link(url, api)
-    except requests.exceptions.HTTPError as ex:
-        print(ex)
-
-    print("Битлинк", bitlink)
-
-    parsed_path_bitlink = parsed_url(bitlink)
-    count_clicks(api, parsed_path_bitlink)
+Python3 должен быть уже установлен. 
+Затем используйте `pip` (или `pip3`, есть конфликт с Python2) для установки зависимостей:
 ```
+pip install -r requirements.txt
+```
+
+### Цель проекта
+
+Код написан в образовательных целях
