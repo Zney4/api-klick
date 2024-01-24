@@ -6,7 +6,7 @@ from urllib.parse import urlparse
 
 def shorten_link(bitlink_token, long_url):
     url = "https://api-ssl.bitly.com/v4/bitlinks"
-    Authorization = {"Authorization": "Bearer {}".format(bitlink_token)}
+    Authorization_my_new_var = {"Authorization": "Bearer {}".format(bitlink_token)}
     params = {"long_url": long_url}
     response = requests.post(url, headers=Authorization, json=params)
     response.raise_for_status()
@@ -15,7 +15,7 @@ def shorten_link(bitlink_token, long_url):
 
 
 def count_clicks(bitlink_token, bitlink):
-    Authorization = {"Authorization": "Bearer {}".format(bitlink_token)}
+    Authorization_my_new_var = {"Authorization": "Bearer {}".format(bitlink_token)}
     link = f"https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/clicks/summary"
     params = {"units": -1, "unit": "month"}
     response = requests.get(link, params=params, headers=Authorization)
@@ -25,7 +25,7 @@ def count_clicks(bitlink_token, bitlink):
 
 
 def is_bitlink(long_url, bitlink_token):
-    Authorization = {"Authorization": "Bearer {}".format(bitlink_token)}
+    Authorization_my_new_var = {"Authorization": "Bearer {}".format(bitlink_token)}
     info_url = f'https://api-ssl.bitly.com/v4/bitlinks/{long_url}'
 
     response = requests.get(info_url, headers=Authorization)
