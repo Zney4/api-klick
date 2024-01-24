@@ -7,7 +7,6 @@ from urllib.parse import urlparse
 def shorten_link(bitlink_token):
     url = "https://api-ssl.bitly.com/v4/bitlinks"
     Authorization = {"Authorization": "Bearer {}".format(bitlink_token)}
-
     params = {"long_url": long_url}
     response = requests.post(url, headers=Authorization, json=params)
     response.raise_for_status()
