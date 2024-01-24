@@ -8,7 +8,7 @@ Python
 
 Python3 должен быть уже установлен. 
 Затем используйте `pip` (или `pip3`, есть конфликт с Python2) для установки зависимостей:
-```
+```python
 pip install -r requirements.txt
 ```
 
@@ -17,7 +17,18 @@ Environment variables.
 Файл .env
 
 ## Запуск кода:
+```python
    python api-klick.py
+```
+
+### Пример результата:
+```
+Введите ссылку 
+>>> bit.ly/3vNDpiK
+info_url: 200
+Колличество кликов: 4
+```
+
 
 
 
@@ -25,3 +36,7 @@ Environment variables.
 ### Цель проекта
 
 Код написан в образовательных целях
+
+
+
+
