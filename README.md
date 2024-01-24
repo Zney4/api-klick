@@ -12,10 +12,10 @@ Python3 должен быть уже установлен.
 pip install -r requirements.txt
 ```
 
-3.Переменные окружения: Environment variables.
+3. Переменные окружения: Environment variables.
 Файл .env
 
-4.Запуск кода:
+4. Запуск кода:
    python api.klick.py
 
 
