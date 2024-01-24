@@ -16,7 +16,7 @@ pip install -r requirements.txt
 Файл .env
 
 4. Запуск кода:
-   python api.klick.py
+   python api-klick.py
 
 
 
