@@ -33,7 +33,7 @@ def is_bitlink(long_url, bitlink_token):
     return response.status_code
 
 
-def parsed_url(bitlink):
+def get_parsed_url(bitlink):
     parsed_bitlink = urlparse(bitlink)
 
     return f'{parsed_bitlink.netloc}{parsed_bitlink.path}'
@@ -61,4 +61,4 @@ if __name__ == "__main__":
         print(ex)
         print("Битлинк", bitlink)
 
-        parsed_path_bitlink = parsed_url(bitlink)
+        parsed_path_bitlink = get_parsed_url(bitlink)
