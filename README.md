@@ -16,9 +16,11 @@ pip install -r requirements.txt
 Environment variables.
 Файл .env
 
+Битли токен можно получить на этом сайте: https://app.bitly.com/
+
 ## Запуск кода:
 ```python
-   python api-klick.py
+python api-klick.py
 ```
 
 ### Пример результата:
