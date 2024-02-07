@@ -3,12 +3,13 @@ import os
 from dotenv import load_dotenv
 from urllib.parse import urlparse
 import logging
+import argparse
 
 
-def shorten_link(bitly_token, long_url):
+def shorten_link(bitly_token, args):
     url = "https://api-ssl.bitly.com/v4/bitlinks"
     authorization = {"Authorization": "Bearer {}".format(bitly_token)}
-    params = {"long_url": long_url}
+    params = {"long_url": args}
     response = requests.post(url, headers=authorization, json=params)
     response.raise_for_status()
 
@@ -25,9 +26,9 @@ def count_clicks(bitly_token, bitlink):
     return response.json()["total_clicks"]
 
 
-def is_bitlink(long_url, bitly_token):
+def is_bitlink(args, bitly_token):
     authorization = {"Authorization": "Bearer {}".format(bitly_token)}
-    info_url = f"https://api-ssl.bitly.com/v4/bitlinks/{long_url}"
+    info_url = f"https://api-ssl.bitly.com/v4/bitlinks/{args}"
 
     response = requests.get(info_url, headers=authorization)
 
@@ -44,16 +45,18 @@ if __name__ == "__main__":
     load_dotenv()
     bitly_token = os.environ["BITLY_TOKEN"]
 
-    long_url = input("Введите ссылку \n>>>")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--url", help="api help", default="bit.ly/3w4XIZ9")
+    args = parser.parse_args()
+    url = args.url
+    print(args)
 
     try:
-        status_code = is_bitlink(long_url, bitly_token)
-        logging.info("info_url:", status_code)
-        if status_code:
-            count_clicks = count_clicks(bitly_token, long_url)
+        if is_bitlink(url, bitly_token):
+            count_clicks = count_clicks(bitly_token, url)
             print("Колличество кликов:", count_clicks)
         else:
-            bitlink = shorten_link(bitly_token, long_url)
+            bitlink = shorten_link(bitly_token, url)
             parsed_path_bitlink = get_parsed_url(bitlink)
             print("Битлинк", parsed_path_bitlink)
 
