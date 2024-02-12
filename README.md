@@ -29,8 +29,7 @@ python api-klick.py
 
 ### Пример результата
 ```
-Введите ссылку 
->>> bit.ly/3vNDpiK
+Namespace(url='bit.ly/49xhN8R')
 info_url: 200
 Колличество кликов: 4
 ```
