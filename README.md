@@ -13,7 +13,6 @@ pip install -r requirements.txt
 ```
 
 ## Переменные окружения
-Environment variables
 Файл .env      
 В нём надо указать перменую с битли токеном
 ```
