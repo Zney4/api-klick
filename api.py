@@ -46,10 +46,10 @@ if __name__ == "__main__":
     bitly_token = os.environ["BITLY_TOKEN"]
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("--url", help="api help", default="bit.ly/3w4XIZ9")
+    parser.add_argument("--url", help="api help", default="")
     args = parser.parse_args()
     url = args.url
-    print(args)
+    logging.info(args)
 
     try:
         if is_bitlink(url, bitly_token):
