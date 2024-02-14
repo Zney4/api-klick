@@ -16,7 +16,7 @@ pip install -r requirements.txt
 Файл .env      
 В нём надо указать перменую с битли токеном
 ```
-BITLY_TOKEN = example
+BITLY_TOKEN=example
 ```
 
 Битли токен можно получить на этом сайте: https://app.bitly.com/
