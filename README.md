@@ -21,9 +21,9 @@ BITLY_TOKEN=example
 
 Битли токен можно получить на этом сайте: https://app.bitly.com/
 
-## Запуск кода
+## Пример запуска кода
 ```python
-python api-klick.py
+python api.py --url bit.ly/3w4XIZ9
 ```
 
 ### Пример результата
